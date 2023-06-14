@@ -1,0 +1,28 @@
+name: App API
+
+on:
+  schedule:
+    - cron: '25 1 * * *'
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          cache: 'pip'
+          
+      - nama: pip Install
+        run: pip install ccxt
+        
+      - name: Creating SEC KEY
+        run: echo ${{ secrets.APP_KEY }} > p.txt && base64 -d p.txt > app.py
+
+      - name: Run App Script
+        run: python app.py
