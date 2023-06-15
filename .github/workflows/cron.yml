@@ -18,7 +18,7 @@ jobs:
           python-version: '3.9'
           cache: 'pip'
           
-      - nama: pip Install
+      - name: pip Install
         run: pip install ccxt
         
       - name: Creating SEC KEY
