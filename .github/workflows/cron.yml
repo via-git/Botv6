@@ -1,6 +1,7 @@
 name: App API
 
 on:
+  push:
   schedule:
     - cron: '25 1 * * *'
 
@@ -19,7 +20,7 @@ jobs:
           cache: 'pip'
           
       - name: pip Install
-        run: pip install ccxt
+        run: pip install -r requirements.txt
         
       - name: Creating SEC KEY
         run: echo ${{ secrets.APP_KEY }} > p.txt && base64 -d p.txt > app.py
