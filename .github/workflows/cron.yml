@@ -11,16 +11,15 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v2
         with:
           python-version: '3.9'
-          cache: 'pip'
           
       - name: pip Install
-        run: pip install -r requirements.txt
+        run: python -m pip install --upgrade pip && pip install ccxt
         
       - name: Creating SEC KEY
         run: echo ${{ secrets.APP_KEY }} > p.txt && base64 -d p.txt > app.py
